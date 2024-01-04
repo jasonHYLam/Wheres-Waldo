@@ -5,10 +5,21 @@ export function GamePage() {
 
 const [ showTargetBox, setShowTargetBox ] = useState(false);
 
-function handleClick() {
+function toggleTargetBox() {
 
     showTargetBox ? setShowTargetBox(false) : setShowTargetBox(true);
     console.log(`showTargetBox: ${showTargetBox}`)
+}
+
+function getMouseCoords(e) {
+    console.log(`${e.clientX}, ${e.clientY}`)
+}
+
+function handleClick(e) {
+    toggleTargetBox()
+    if (showTargetBox) {
+        getMouseCoords(e)
+    }
 }
 
 
@@ -16,7 +27,10 @@ function handleClick() {
     return (
         <>
         <p>Fun game</p>
-        <section onClick={handleClick} className={styles.imageContainer}></section>
+        <section 
+            onClick={handleClick}
+            className={styles.imageContainer}
+            ></section>
         </>
     )
 }
