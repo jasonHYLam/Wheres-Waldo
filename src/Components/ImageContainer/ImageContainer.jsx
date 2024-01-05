@@ -1,4 +1,5 @@
 import { TargetBox } from '../TargetBox/TargetBox';
+import { DropDownBox } from '../DropDownBox/DropDownBox';
 import styles from './ImageContainer.module.css';
 
 export function ImageContainer({showTargetBox=false, handleClick, determineMouseCoords=null}) {
@@ -9,7 +10,12 @@ export function ImageContainer({showTargetBox=false, handleClick, determineMouse
         className={styles.imageContainer}
         onPointerMove={determineMouseCoords}
         >
-            {showTargetBox ? <TargetBox/> : null }
+            {showTargetBox ? 
+            <>
+            <TargetBox/> 
+            <DropDownBox/>
+            </>
+            : null }
             
         </section>
         </>
