@@ -4,6 +4,7 @@ import styles from './GamePage.module.css';
 export function GamePage() {
 
 const [ showTargetBox, setShowTargetBox ] = useState(false);
+const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0})
 
 function toggleTargetBox() {
 
@@ -19,20 +20,28 @@ function handleClick(e) {
     toggleTargetBox()
     if (showTargetBox) {
         getMouseCoords(e)
+        setMouseCoords({x: e.pageX, y: e.pageY})
+
     }
 }
 
-// for the box, may need to make a div that is out of flow. and base its centre on mouse, and have fixed width and height.
-
-
-
     return (
         <>
-        <p>Fun game</p>
-        <section 
-            onClick={handleClick}
-            className={styles.imageContainer}
-            ></section>
+            <section 
+                onClick={handleClick}
+                className={styles.imageContainer}
+                onPointerMove={(e) => {setMouseCoords({x: e.pageX, y: e.pageY})}}
+            >
+
+                {(showTargetBox) ? 
+                <div 
+                    className={styles.targetBox} 
+                    style={{
+                        transform: `translate(${mouseCoords.x}px, ${mouseCoords.y}px)`
+                    }}
+                    ></div>
+                     : null }
+            </section>
         </>
     )
 }

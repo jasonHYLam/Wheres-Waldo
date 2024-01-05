@@ -2,11 +2,22 @@
     background-image: url('../../assets/wheresWaldoPokemon.jpeg');
     height: 2000px;
     width:1000px;
+    /* height: 100vh; */
+    /* width: 100vw; */
     position: relative;
 }
 
 .targetBox {
-    position: relative;
-    width: 20px;
-    height: 20px;
+    position:absolute;
+    width: 30px;
+    height: 30px;
+    /* left: 50%;
+    top: 50%; */
+    /* left: -15px;
+    top: -15px; */
+    left: -30px;
+    top: -30px;
+    border: 1px solid blue;
+    background-color: blue;
+    /* border-radius: 50%; */
 }
