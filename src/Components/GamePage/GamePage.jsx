@@ -1,5 +1,9 @@
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import styles from './GamePage.module.css';
+import { ImageContainer } from '../ImageContainer/ImageContainer';
+
+export const GameContext = createContext({
+})
 
 export function GamePage() {
 
@@ -21,27 +25,27 @@ function handleClick(e) {
     if (showTargetBox) {
         getMouseCoords(e)
         setMouseCoords({x: e.pageX, y: e.pageY})
-
     }
+}
+
+function determineMouseCoords(e) {
+    setMouseCoords({x: e.pageX, y: e.pageY})
 }
 
     return (
         <>
-            <section 
-                onClick={handleClick}
-                className={styles.imageContainer}
-                onPointerMove={(e) => {setMouseCoords({x: e.pageX, y: e.pageY})}}
-            >
+        <GameContext.Provider value={{mouseCoords}}>
 
-                {(showTargetBox) ? 
-                <div 
-                    className={styles.targetBox} 
-                    style={{
-                        transform: `translate(${mouseCoords.x}px, ${mouseCoords.y}px)`
-                    }}
-                    ></div>
-                     : null }
-            </section>
+            {showTargetBox ? 
+
+            <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
+            </ImageContainer>
+            :
+            <ImageContainer handleClick={handleClick} determineMouseCoords={determineMouseCoords}>
+            </ImageContainer>
+            }
+
+        </GameContext.Provider>
         </>
     )
 }

@@ -1,0 +1,11 @@
+.targetBox {
+    position:absolute;
+    width: 30px;
+    height: 30px;
+    left: -20px;
+    top: -20px;
+    border: 1px solid blue;
+    background-color: blue;
+    /* border-radius: 50%; */
+}
+

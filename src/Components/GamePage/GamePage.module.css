@@ -1,9 +1,7 @@
 .imageContainer {
     background-image: url('../../assets/wheresWaldoPokemon.jpeg');
-    height: 2000px;
-    width:1000px;
-    /* height: 100vh; */
-    /* width: 100vw; */
+    height: 1800px;
+    width: 100vw;
     position: relative;
 }
 
@@ -11,13 +9,16 @@
     position:absolute;
     width: 30px;
     height: 30px;
-    /* left: 50%;
-    top: 50%; */
-    /* left: -15px;
-    top: -15px; */
-    left: -30px;
-    top: -30px;
+    left: -20px;
+    top: -20px;
     border: 1px solid blue;
     background-color: blue;
     /* border-radius: 50%; */
+}
+
+.dropDownMenu {
+    border: 1px solid blue;
+    background-color: white;
+    width: 200px;
+    
 }
