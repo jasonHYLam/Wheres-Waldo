@@ -22,6 +22,8 @@ function handleClick(e) {
     }
 }
 
+// for the box, may need to make a div that is out of flow. and base its centre on mouse, and have fixed width and height.
+
 
 
     return (
