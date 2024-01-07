@@ -14,11 +14,15 @@ const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0})
 // fetch
 // possibly set state
 useEffect(() => {
-    async() => {
+    console.log('checking GamePage useEffect')
+    console.log(`${import.meta.env.VITE_BACKEND_URL}`)
+    async function getCharacters() {
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_char`)
-        const data = response.json();
+        console.log(response)
+        const data = await response.json();
         console.log(data)
     }
+    getCharacters();
 },
 []
 )
