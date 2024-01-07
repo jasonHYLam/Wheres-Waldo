@@ -1,7 +1,7 @@
-export function DropDownCharacter({name, backgroundUrl}) {
+export function DropDownCharacter({name, backgroundUrl=null}) {
     return (
         <div>
-            <div style={`background-image(${backgroundUrl})`}></div>
+            <img src={backgroundUrl} alt="" />
             <p>{name}</p>
         </div>
     )

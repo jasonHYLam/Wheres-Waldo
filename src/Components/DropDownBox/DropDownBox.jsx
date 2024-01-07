@@ -1,6 +1,10 @@
 import { useContext } from 'react';
 import { GameContext } from '../GamePage/GamePage';
 import styles from './DropDownBox.module.css';
+// import icon from '../../assets/react.svg'
+
+import { DropDownCharacter } from '../DropDownCharacter/DropDownCharacter';
+
 
 export function DropDownBox() {
 
@@ -14,10 +18,9 @@ export function DropDownBox() {
             transform: `translate(${mouseCoords.x}px, ${mouseCoords.y}px)`
         }}
         >
-            <p>Char 1</p>
-            <p>Char 2</p>
-            <p>Char 3</p>
+            <DropDownCharacter name={'Abra'} backgroundUrl={'../../assets/react.svg'} />
         </section>
+
         
         </>
     )
