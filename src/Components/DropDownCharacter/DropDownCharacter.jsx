@@ -1,7 +1,9 @@
+import styles from './DropDownCharacter.module.css';
+
 export function DropDownCharacter({name, backgroundUrl=null}) {
     return (
         <div>
-            <img src={backgroundUrl} alt="" />
+            <img className={styles.characterImage} src={backgroundUrl} alt="" />
             <p>{name}</p>
         </div>
     )
