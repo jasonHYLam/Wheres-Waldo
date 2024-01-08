@@ -10,16 +10,21 @@ export function DropDownCharacter({name, backgroundUrl=null}) {
 
     async function clickCharacter() {
         console.log(`Clicked ${name}`)
-        const data = {name, mouseCoords}
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/get_specific_char`, {
+        const dataToSend = {name, mouseCoords}
+        console.log(dataToSend)
+        console.log(JSON.stringify(dataToSend))
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_specific_char`, {
             headers: {
                 "Content-Type": "application/json",
             },
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify(dataToSend),
         })
 
-        // hmm. could i fetch the data, set state, associate name with id, and then...
+        const dataReceived = await response.json()
+        console.log('checking data received')
+        console.log(dataReceived)
+
     }
 
     return (
