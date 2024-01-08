@@ -10,6 +10,9 @@ export function GamePage() {
 const [ showTargetBox, setShowTargetBox ] = useState(false);
 const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0})
 
+// hmm i'm sorta reluctant to set State for the fetched stuff... 
+// but surely there is just no need 
+
 // what to do in the useEffect
 // fetch
 // possibly set state
