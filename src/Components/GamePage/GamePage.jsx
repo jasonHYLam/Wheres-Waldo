@@ -55,7 +55,7 @@ function determineMouseCoords(e) {
 
     return (
         <>
-        <GameContext.Provider value={{mouseCoords}}>
+        <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData }}>
 
             {showTargetBox ? 
 
