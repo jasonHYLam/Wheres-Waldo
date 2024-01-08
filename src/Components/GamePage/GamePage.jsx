@@ -50,17 +50,11 @@ function getMouseCoords(e) {
 
 // hm. i have disabled determineMouseCoords for onPointerMove. That seems to do something
 function handleClick(e) {
-    // testing out what happens when i move setMouseCoords out of the if statement.
-        setMouseCoords({x: e.pageX, y: e.pageY})
+    setMouseCoords({x: e.pageX, y: e.pageY})
     toggleTargetBox()
     if (showTargetBox) {
         getMouseCoords(e)
-        // setMouseCoords({x: e.pageX, y: e.pageY})
     }
-}
-
-function determineMouseCoords(e) {
-    setMouseCoords({x: e.pageX, y: e.pageY})
 }
 
     return (
@@ -72,7 +66,7 @@ function determineMouseCoords(e) {
             <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
             </ImageContainer>
             :
-            <ImageContainer handleClick={handleClick} determineMouseCoords={determineMouseCoords}>
+            <ImageContainer handleClick={handleClick}>
             </ImageContainer>
             }
 
