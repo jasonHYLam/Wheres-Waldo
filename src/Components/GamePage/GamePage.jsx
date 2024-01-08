@@ -8,19 +8,23 @@ export const GameContext = createContext({
 export function GamePage() {
 
 const [ showTargetBox, setShowTargetBox ] = useState(false);
-const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0})
+const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
+const [ charactersData, setCharactersData ] = useState([]);
 
-// hmm i'm sorta reluctant to set State for the fetched stuff... 
-// but surely there is just no need 
-
-// what to do in the useEffect
-// fetch
-// possibly set state
 useEffect(() => {
     async function getCharacters() {
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_char`)
         const data = await response.json();
         console.log(data)
+
+        const modifiedData = data.map(character => {
+            return {
+                name: character.name,
+                isFound: character.is_found,
+            }
+        })
+
+        setCharactersData(modifiedData)
     }
     getCharacters();
 },
