@@ -8,7 +8,7 @@ export function ImageContainer({showTargetBox=false, handleClick, determineMouse
         <section
         onClick={handleClick}
         className={styles.imageContainer}
-        onPointerMove={determineMouseCoords}
+        // onPointerMove={determineMouseCoords}
         >
             {showTargetBox ? 
             <>

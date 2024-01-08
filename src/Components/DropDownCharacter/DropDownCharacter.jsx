@@ -4,7 +4,7 @@ import { GameContext } from '../GamePage/GamePage';
 
 export function DropDownCharacter({name, backgroundUrl=null}) {
 
-    const { mouseCoords } = useContext(GameContext);
+    const { mouseCoords, charactersData, setCharactersData } = useContext(GameContext);
     console.log('checking mouseCoords')
     console.log(mouseCoords)
 
@@ -21,9 +21,17 @@ export function DropDownCharacter({name, backgroundUrl=null}) {
             body: JSON.stringify(dataToSend),
         })
 
-        const dataReceived = await response.json()
+        const { isCorrect } = await response.json()
         console.log('checking data received')
-        console.log(dataReceived)
+
+        console.log(isCorrect)
+        // get ready to have shit fucked up
+        if (isCorrect) {
+            setCharactersData([
+                ...charactersData,
+                {name: name, isFound: true}
+            ])
+        }
 
     }
 

@@ -11,6 +11,13 @@ const [ showTargetBox, setShowTargetBox ] = useState(false);
 const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
 const [ charactersData, setCharactersData ] = useState([]);
 
+console.log('sha la la')
+console.log(charactersData)
+
+// i have had to disable onPointerMove in ImageContainer
+// i will need to find a way to 
+
+
 useEffect(() => {
     async function getCharacters() {
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_char`)
@@ -41,11 +48,14 @@ function getMouseCoords(e) {
     console.log(`${e.clientX}, ${e.clientY}`)
 }
 
+// hm. i have disabled determineMouseCoords for onPointerMove. That seems to do something
 function handleClick(e) {
+    // testing out what happens when i move setMouseCoords out of the if statement.
+        setMouseCoords({x: e.pageX, y: e.pageY})
     toggleTargetBox()
     if (showTargetBox) {
         getMouseCoords(e)
-        setMouseCoords({x: e.pageX, y: e.pageY})
+        // setMouseCoords({x: e.pageX, y: e.pageY})
     }
 }
 
