@@ -5,14 +5,9 @@ import { GameContext } from '../GamePage/GamePage';
 export function DropDownCharacter({name, backgroundUrl=null}) {
 
     const { mouseCoords, charactersData, setCharactersData } = useContext(GameContext);
-    console.log('checking mouseCoords')
-    console.log(mouseCoords)
 
     async function clickCharacter() {
-        console.log(`Clicked ${name}`)
         const dataToSend = {name, mouseCoords}
-        console.log(dataToSend)
-        console.log(JSON.stringify(dataToSend))
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_specific_char`, {
             headers: {
                 "Content-Type": "application/json",
@@ -22,17 +17,17 @@ export function DropDownCharacter({name, backgroundUrl=null}) {
         })
 
         const { isCorrect } = await response.json()
-        console.log('checking data received')
 
-        console.log(isCorrect)
-        // get ready to have shit fucked up
         if (isCorrect) {
-            setCharactersData([
-                ...charactersData,
-                {name: name, isFound: true}
-            ])
-        }
+            const modifiedCharacterData = charactersData.map(character => {
+                if (character.name === name) {
+                    return {name, isFound: true}
+                }
+                else return character
+            })
 
+            setCharactersData(modifiedCharacterData)
+        }
     }
 
     return (
