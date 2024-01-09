@@ -61,14 +61,8 @@ function handleClick(e) {
         <>
         <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData }}>
 
-            {showTargetBox ? 
-
             <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
             </ImageContainer>
-            :
-            <ImageContainer handleClick={handleClick}>
-            </ImageContainer>
-            }
 
         </GameContext.Provider>
         </>
