@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 import styles from './GamePage.module.css';
 import { ImageContainer } from '../ImageContainer/ImageContainer';
 
@@ -11,10 +11,12 @@ export function GamePage() {
     const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
     // intial set up has object with false isFound value, to prevent win condition triggering. 
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
-    const [ isGameWon, setIsGameWon ] = useState(false)
+    // const [ isGameWon, setIsGameWon ] = useState(false)
 
     // console.log('sha la la')
     // console.log(charactersData)
+
+    const isGameWonRef = useRef(false);
 
     useEffect(() => {
         async function getCharacters() {
@@ -35,12 +37,13 @@ export function GamePage() {
     []
     )
 
+    
     if (charactersData.every(character => {
         return character.isFound
         })) {
         console.log('all characters found')
         // when all characters found, do something
-        setIsGameWon(true)
+        isGameWonRef.current = true;
         // disable the game; disable handleClick I guess
         // show you win modal
     }
@@ -65,7 +68,7 @@ export function GamePage() {
 
     return (
         <>
-        <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData, isGameWon }}>
+        <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData, isGameWonRef }}>
 
             <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
             </ImageContainer>
