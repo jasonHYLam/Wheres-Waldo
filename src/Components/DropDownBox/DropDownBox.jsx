@@ -2,10 +2,6 @@ import { useContext } from 'react';
 import { GameContext } from '../GamePage/GamePage';
 import styles from './DropDownBox.module.css';
 
-import abra from '../../assets/abra.jpeg'
-import dewgong from '../../assets/dewgong.png'
-import gloom from '../../assets/gloom.png'
-
 import { DropDownCharacter } from '../DropDownCharacter/DropDownCharacter';
 
 
@@ -25,7 +21,7 @@ export function DropDownBox() {
         >
             {charactersData.map(character => {
                 if (!character.isFound) {
-                    return <DropDownCharacter key={character.name} name={character.name}  />
+                    return <DropDownCharacter key={character.name} name={character.name}/>
                 }
             })}
 

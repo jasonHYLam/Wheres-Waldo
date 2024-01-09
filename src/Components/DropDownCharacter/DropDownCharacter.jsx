@@ -2,9 +2,18 @@ import { useContext } from 'react';
 import styles from './DropDownCharacter.module.css';
 import { GameContext } from '../GamePage/GamePage';
 
-export function DropDownCharacter({name, backgroundUrl=null}) {
+import abra from '../../assets/abra.jpeg'
+import dewgong from '../../assets/dewgong.png'
+import gloom from '../../assets/gloom.png'
+
+export function DropDownCharacter({name}) {
 
     const { mouseCoords, charactersData, setCharactersData } = useContext(GameContext);
+
+    let backgroundUrl = '';
+    if (name === 'Abra') backgroundUrl = abra;
+    else if (name === 'Dewgong') backgroundUrl = dewgong;
+    else if (name === 'Gloom') backgroundUrl = gloom;
 
     async function clickCharacter() {
         const dataToSend = {name, mouseCoords}
