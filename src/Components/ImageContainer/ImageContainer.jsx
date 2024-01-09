@@ -5,7 +5,11 @@ import { useContext } from 'react';
 import { GameContext } from '../GamePage/GamePage';
 import { GameOverModal } from '../GameOverModal/GameOverModal';
 
+import backgroundImage from '../../assets/wheresWaldoPokemon.jpeg'
+
 export function ImageContainer({showTargetBox=false, handleClick}) {
+
+
 
     const { isGameWonRef } = useContext(GameContext);
     const isGameWon = isGameWonRef.current;
@@ -23,8 +27,9 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
         <>
         <section
         onClick={handleClick}
-        className={styles.imageContainer}
+        // className={styles.imageContainer}
         >
+            <img src={backgroundImage} className={styles.imageContainer} alt="" />
             <GameOverModal/>
             {showTargetBox ? 
             <>

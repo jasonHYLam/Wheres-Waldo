@@ -68,12 +68,16 @@ export function GamePage() {
 
     return (
         <>
-        <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData, isGameWonRef }}>
+        <main className={styles.gamePage}>
 
-            <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
-            </ImageContainer>
+            <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData, isGameWonRef }}>
 
-        </GameContext.Provider>
+                <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
+                </ImageContainer>
+
+            </GameContext.Provider>
+
+        </main>
         </>
     )
 }
