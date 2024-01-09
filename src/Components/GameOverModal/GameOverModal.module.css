@@ -1,0 +1,6 @@
+.gameOverModal {
+    background-color: white;
+    position: absolute;
+    height: 50svh;
+    width: 50svw;
+}

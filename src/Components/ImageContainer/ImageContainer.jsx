@@ -16,8 +16,8 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
 
         isGameWon ? 
         <section className={styles.imageContainer}>
-            <GameOverModal/>
 
+            {/* <GameOverModal/> */}
         </section>
         :
         <>
@@ -25,6 +25,7 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
         onClick={handleClick}
         className={styles.imageContainer}
         >
+            <GameOverModal/>
             {showTargetBox ? 
             <>
             <TargetBox/> 
