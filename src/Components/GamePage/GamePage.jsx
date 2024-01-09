@@ -18,9 +18,6 @@ export function GamePage() {
 
     const isGameWonRef = useRef(false);
 
-    console.log('checking isGameWonRef value')
-    console.log(isGameWonRef.current)
-
     useEffect(() => {
         async function getCharacters() {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_char`)

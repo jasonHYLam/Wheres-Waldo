@@ -3,6 +3,7 @@ import { DropDownBox } from '../DropDownBox/DropDownBox';
 import styles from './ImageContainer.module.css';
 import { useContext } from 'react';
 import { GameContext } from '../GamePage/GamePage';
+import { GameOverModal } from '../GameOverModal/GameOverModal';
 
 export function ImageContainer({showTargetBox=false, handleClick}) {
 
@@ -13,7 +14,11 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
 
     return(
 
-        isGameWon ? <section className={styles.imageContainer}></section>
+        isGameWon ? 
+        <section className={styles.imageContainer}>
+            <GameOverModal/>
+
+        </section>
         :
         <>
         <section
