@@ -1,6 +1,7 @@
 .imageContainer {
     background-image: url('../../assets/wheresWaldoPokemon.jpeg');
-    height: 1800px;
-    width: 100vw;
+    /* width: 100vw; */
+    width: 150svw;
+    min-height: 1800px;
     position: relative;
 }
