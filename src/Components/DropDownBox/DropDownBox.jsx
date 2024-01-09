@@ -9,8 +9,6 @@ export function DropDownBox() {
 
     const { mouseCoords, charactersData } = useContext(GameContext);
 
-    // hm. i now want to use map method on charactersData and use isFound.
-    // but how do i set backgroundUrl now...
     return (
         <>
         <section
@@ -25,9 +23,6 @@ export function DropDownBox() {
                 }
             })}
 
-            {/* <DropDownCharacter name={'Abra'} backgroundUrl={abra} />
-            <DropDownCharacter name={'Dewgong'} backgroundUrl={dewgong} />
-            <DropDownCharacter name={'Gloom'} backgroundUrl={gloom} /> */}
         </section>
 
         

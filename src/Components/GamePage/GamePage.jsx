@@ -11,6 +11,7 @@ export function GamePage() {
     const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
     // intial set up has object with false isFound value, to prevent win condition triggering. 
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
+    const [ isGameWon, setIsGameWon ] = useState(false)
 
     // console.log('sha la la')
     // console.log(charactersData)
@@ -39,6 +40,7 @@ export function GamePage() {
         })) {
         console.log('all characters found')
         // when all characters found, do something
+        setIsGameWon(true)
         // disable the game; disable handleClick I guess
         // show you win modal
     }
@@ -63,7 +65,7 @@ export function GamePage() {
 
     return (
         <>
-        <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData }}>
+        <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData, isGameWon }}>
 
             <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
             </ImageContainer>
