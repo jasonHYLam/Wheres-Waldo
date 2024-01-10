@@ -9,14 +9,20 @@ export function GamePage() {
 
     const [ showTargetBox, setShowTargetBox ] = useState(false);
     const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
-    // intial set up has object with false isFound value, to prevent win condition triggering. 
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
-    // const [ isGameWon, setIsGameWon ] = useState(false)
-
-    // console.log('sha la la')
-    // console.log(charactersData)
-
     const isGameWonRef = useRef(false);
+
+    // const normalisedCoords = {
+    //     x: mouseCoords.x / window.innerWidth, 
+    //     y: mouseCoords.y / window.innerHeight, 
+    // }
+
+    function normaliseCoords(e) {
+        return {
+            x: e.pageX / window.screen.width,
+            y: e.pageY / window.screen.height,
+        }
+    }
 
     useEffect(() => {
         async function getCharacters() {
@@ -55,10 +61,16 @@ export function GamePage() {
     }
 
     function getMouseCoords(e) {
-        console.log(`${e.clientX}, ${e.clientY}`)
+        //
+        console.log(`${e.pageX/window.screen.width}, ${e.pageY/window.screen.height}`)
+        console.log(`${e.pageX}, ${e.pageY}`)
+        console.log(`screen width: ${window.screen.width}`)
+        console.log(`screen height: ${window.screen.height}`)
+        console.log(normaliseCoords(e))
     }
 
     function handleClick(e) {
+        // setMouseCoords({x: e.pageX, y: e.pageY})
         setMouseCoords({x: e.pageX, y: e.pageY})
         toggleTargetBox()
         if (showTargetBox) {
