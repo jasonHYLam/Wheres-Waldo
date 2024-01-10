@@ -12,15 +12,14 @@ export function GamePage() {
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
     const isGameWonRef = useRef(false);
 
-    // const normalisedCoords = {
-    //     x: mouseCoords.x / window.innerWidth, 
-    //     y: mouseCoords.y / window.innerHeight, 
-    // }
+    
+    const imageDimensionsRef = useRef({x: 1, y: 1});
+    const imageDimensions = imageDimensionsRef.current;
 
     function normaliseCoords(e) {
         return {
-            x: e.pageX / window.screen.width,
-            y: e.pageY / window.screen.height,
+            x: 100 * e.pageX / imageDimensions.x,
+            y: 100 * e.pageY / imageDimensions.y,
         }
     }
 
@@ -62,10 +61,11 @@ export function GamePage() {
 
     function getMouseCoords(e) {
         //
-        console.log(`${e.pageX/window.screen.width}, ${e.pageY/window.screen.height}`)
         console.log(`${e.pageX}, ${e.pageY}`)
-        console.log(`screen width: ${window.screen.width}`)
-        console.log(`screen height: ${window.screen.height}`)
+        // these ain't right... this is still window... dammit
+        // ajjj i need the div dimensions, not window/screen dimensions...
+        console.log(`screen width: ${imageDimensionsRef.current.x}`)
+        console.log(`screen height: ${imageDimensionsRef.current.y}`)
         console.log(normaliseCoords(e))
     }
 
@@ -82,7 +82,7 @@ export function GamePage() {
         <>
         <main className={styles.gamePage}>
 
-            <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData, isGameWonRef }}>
+            <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef }}>
 
                 <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
                 </ImageContainer>

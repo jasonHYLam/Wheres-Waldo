@@ -11,10 +11,18 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
 
 
 
-    const { isGameWonRef } = useContext(GameContext);
+    const { isGameWonRef, imageDimensionsRef } = useContext(GameContext);
     const isGameWon = isGameWonRef.current;
     console.log('checking isGameWon')
     console.log(isGameWonRef)
+
+    function getImageDimensions(e) {
+
+        console.log(`image height: ${e.target.height}`)
+        console.log(`image width: ${e.target.width}`)
+        imageDimensionsRef.current = {x: e.target.width, y: e.target.height}
+
+    }
 
     return(
 
@@ -28,8 +36,9 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
         <section
         onClick={handleClick}
         // className={styles.imageContainer}
+        
         >
-            <img src={backgroundImage} className={styles.imageContainer} alt="" />
+            <img src={backgroundImage} className={styles.imageContainer} alt="" onLoad={getImageDimensions} />
             {/* <GameOverModal/> */}
             {showTargetBox ? 
             <>
