@@ -18,8 +18,8 @@ export function GamePage() {
 
     function normaliseCoords(e) {
         return {
-            x: 100 * e.pageX / imageDimensions.x,
-            y: 100 * e.pageY / imageDimensions.y,
+            x: 1000 * e.pageX / imageDimensions.x,
+            y: 1000 * e.pageY / imageDimensions.y,
         }
     }
 
