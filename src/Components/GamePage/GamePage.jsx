@@ -1,6 +1,7 @@
 import { createContext, useEffect, useRef, useState } from 'react';
 import styles from './GamePage.module.css';
 import { ImageContainer } from '../ImageContainer/ImageContainer';
+import { GameOverModal } from '../GameOverModal/GameOverModal';
 
 export const GameContext = createContext({
 })
@@ -17,13 +18,7 @@ export function GamePage() {
 
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
     const isGameWonRef = useRef(false);
-
-    console.log('coords')
-    console.log(mouseCoords)
-    console.log('normalised coords')
-    console.log(normalisedCoords)
-
-    
+    const isGameWon = isGameWonRef.current;
 
     function normaliseCoords(coords) {
         return {
@@ -91,6 +86,7 @@ export function GamePage() {
 
             <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef }}>
 
+                {isGameWon ? <GameOverModal/> : null }
                 <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
                 </ImageContainer>
 

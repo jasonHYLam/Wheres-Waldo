@@ -3,7 +3,7 @@ import { DropDownBox } from '../DropDownBox/DropDownBox';
 import styles from './ImageContainer.module.css';
 import { useContext } from 'react';
 import { GameContext } from '../GamePage/GamePage';
-import { GameOverModal } from '../GameOverModal/GameOverModal';
+// import { GameOverModal } from '../GameOverModal/GameOverModal';
 
 import backgroundImage from '../../assets/wheresWaldoPokemon.jpeg'
 
@@ -27,19 +27,12 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
     return(
 
         isGameWon ? 
-        <section className={styles.imageContainer}>
-
-            <GameOverModal/>
-        </section>
+        <section className={styles.imageContainer}></section>
         :
         <>
-        <section
-        onClick={handleClick}
-        // className={styles.imageContainer}
-        
-        >
+        <section onClick={handleClick}>
             <img src={backgroundImage} className={styles.imageContainer} alt="" onLoad={getImageDimensions} />
-            {/* <GameOverModal/> */}
+
             {showTargetBox ? 
             <>
             <TargetBox/> 

@@ -8,10 +8,12 @@ import gloom from '../../assets/gloom.png'
 
 export function DropDownCharacter({name}) {
 
-    const { mouseCoords, charactersData, setCharactersData } = useContext(GameContext);
+    const { mouseCoords, normalisedCoords, charactersData, setCharactersData } = useContext(GameContext);
 
     console.log(`mouse coords`)
-    console.log(mouseCoords)
+    // console.log(mouseCoords)
+    console.log(`normalised mouse coords`)
+    console.log(normalisedCoords)
 
     let backgroundUrl = '';
     if (name === 'Abra') backgroundUrl = abra;
@@ -19,7 +21,9 @@ export function DropDownCharacter({name}) {
     else if (name === 'Gloom') backgroundUrl = gloom;
 
     async function clickCharacter() {
-        const dataToSend = {name, mouseCoords}
+        const dataToSend = {name, normalisedCoords}
+        console.log('checking dataToSend')
+        console.log(dataToSend)
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_specific_char`, {
             headers: {
                 "Content-Type": "application/json",
