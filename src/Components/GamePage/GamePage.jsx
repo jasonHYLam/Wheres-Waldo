@@ -7,19 +7,28 @@ export const GameContext = createContext({
 
 export function GamePage() {
 
+    const imageDimensionsRef = useRef({x: 1, y: 1});
+    const imageDimensions = imageDimensionsRef.current;
     const [ showTargetBox, setShowTargetBox ] = useState(false);
+    // needed to display click properly
     const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
+    // needed for backend verification
+    const normalisedCoords = normaliseCoords(mouseCoords)
+
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
     const isGameWonRef = useRef(false);
 
-    
-    const imageDimensionsRef = useRef({x: 1, y: 1});
-    const imageDimensions = imageDimensionsRef.current;
+    console.log('coords')
+    console.log(mouseCoords)
+    console.log('normalised coords')
+    console.log(normalisedCoords)
 
-    function normaliseCoords(e) {
+    
+
+    function normaliseCoords(coords) {
         return {
-            x: 1000 * e.pageX / imageDimensions.x,
-            y: 1000 * e.pageY / imageDimensions.y,
+            x: 1000 * coords.x / imageDimensions.x,
+            y: 1000 * coords.y / imageDimensions.y,
         }
     }
 
@@ -56,22 +65,20 @@ export function GamePage() {
     function toggleTargetBox() {
 
         showTargetBox ? setShowTargetBox(false) : setShowTargetBox(true);
-        console.log(`showTargetBox: ${showTargetBox}`)
+        // console.log(`showTargetBox: ${showTargetBox}`)
     }
 
     function getMouseCoords(e) {
-        //
-        console.log(`${e.pageX}, ${e.pageY}`)
-        // these ain't right... this is still window... dammit
         // ajjj i need the div dimensions, not window/screen dimensions...
-        console.log(`screen width: ${imageDimensionsRef.current.x}`)
-        console.log(`screen height: ${imageDimensionsRef.current.y}`)
-        console.log(normaliseCoords(e))
+        // console.log(`${e.pageX}, ${e.pageY}`)
+        // console.log(`screen width: ${imageDimensionsRef.current.x}`)
+        // console.log(`screen height: ${imageDimensionsRef.current.y}`)
+        // console.log(normaliseCoords(e))
     }
 
     function handleClick(e) {
-        // setMouseCoords({x: e.pageX, y: e.pageY})
         setMouseCoords({x: e.pageX, y: e.pageY})
+        // setMouseCoords(normaliseCoords(e))
         toggleTargetBox()
         if (showTargetBox) {
             getMouseCoords(e)
@@ -82,7 +89,7 @@ export function GamePage() {
         <>
         <main className={styles.gamePage}>
 
-            <GameContext.Provider value={{ mouseCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef }}>
+            <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef }}>
 
                 <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
                 </ImageContainer>

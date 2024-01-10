@@ -10,6 +10,9 @@ export function DropDownCharacter({name}) {
 
     const { mouseCoords, charactersData, setCharactersData } = useContext(GameContext);
 
+    console.log(`mouse coords`)
+    console.log(mouseCoords)
+
     let backgroundUrl = '';
     if (name === 'Abra') backgroundUrl = abra;
     else if (name === 'Dewgong') backgroundUrl = dewgong;
@@ -26,6 +29,7 @@ export function DropDownCharacter({name}) {
         })
 
         const { isCorrect } = await response.json()
+        console.log(`is correct? ${isCorrect}`)
 
         if (isCorrect) {
             const modifiedCharacterData = charactersData.map(character => {
