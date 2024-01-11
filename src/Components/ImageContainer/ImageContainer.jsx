@@ -27,7 +27,9 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
     return(
 
         isGameWon ? 
-        <section className={styles.imageContainer}></section>
+        <section className={styles.imageContainer}>
+            <img src={backgroundImage} className={styles.imageContainer} alt="" />
+        </section>
         :
         <>
         <section onClick={handleClick}>
