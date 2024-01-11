@@ -3,4 +3,5 @@
     position: absolute;
     height: 50svh;
     width: 50svw;
+    z-index: 2;
 }
