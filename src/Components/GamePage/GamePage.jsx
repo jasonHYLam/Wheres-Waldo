@@ -19,6 +19,11 @@ export function GamePage() {
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
     const isGameWonRef = useRef(false);
     const isGameWon = isGameWonRef.current;
+    console.log('and so, it happens again...')
+
+    // const timerRef = useRef(0);
+    // const timerValue = timerRef.current;
+    const [ timerValue, setTimerValue ] = useState(0)
 
     function normaliseCoords(coords) {
         return {
@@ -27,6 +32,7 @@ export function GamePage() {
         }
     }
 
+    // useEffect hook to fetch the character data.
     useEffect(() => {
         async function getCharacters() {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_char`)
@@ -41,50 +47,61 @@ export function GamePage() {
 
             setCharactersData(modifiedData)
         }
+
         getCharacters();
     },
     []
     )
 
-    
-    if (charactersData.every(character => {
-        return character.isFound
-        })) {
-        console.log('all characters found')
-        // when all characters found, do something
-        isGameWonRef.current = true;
-        // disable the game; disable handleClick I guess
-        // show you win modal
-    }
+    // useEffect hook to start the game once the gamePage has rendered.
+    useEffect(() => {
+        async function startTimer() {
+            fetch(`${import.meta.env.VITE_BACKEND_URL}/start_game`)
+        }
+        startTimer()
+    },[])
 
+    // can i use this for stopping the game?
+    useEffect(() => {
+
+        if (charactersData.every(character => {
+            return character.isFound
+        })) {
+            console.log('all characters found')
+            isGameWonRef.current = true;
+
+            async function getTimerValue() {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/stop_game`)
+
+                const { timeTotal } = await response.json();
+                console.log(timeTotal)
+                setTimerValue(timeTotal)
+
+            }
+
+            getTimerValue()
+
+        }
+
+    }, [ charactersData, isGameWon ])
+
+    
     function toggleTargetBox() {
 
         showTargetBox ? setShowTargetBox(false) : setShowTargetBox(true);
         // console.log(`showTargetBox: ${showTargetBox}`)
     }
 
-    function getMouseCoords(e) {
-        // ajjj i need the div dimensions, not window/screen dimensions...
-        // console.log(`${e.pageX}, ${e.pageY}`)
-        // console.log(`screen width: ${imageDimensionsRef.current.x}`)
-        // console.log(`screen height: ${imageDimensionsRef.current.y}`)
-        // console.log(normaliseCoords(e))
-    }
-
     function handleClick(e) {
         setMouseCoords({x: e.pageX, y: e.pageY})
-        // setMouseCoords(normaliseCoords(e))
         toggleTargetBox()
-        if (showTargetBox) {
-            getMouseCoords(e)
-        }
     }
 
     return (
         <>
         <main className={styles.gamePage}>
 
-            <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef }}>
+            <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef, timerValue }}>
 
                 {isGameWon ? <GameOverModal/> : null }
                 <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
