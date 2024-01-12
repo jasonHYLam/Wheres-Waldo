@@ -2,6 +2,7 @@ import { createContext, useEffect, useRef, useState } from 'react';
 import styles from './GamePage.module.css';
 import { ImageContainer } from '../ImageContainer/ImageContainer';
 import { GameOverModal } from '../GameOverModal/GameOverModal';
+import { GameHeader } from '../Header/GameHeader';
 
 export const GameContext = createContext({
 })
@@ -100,14 +101,20 @@ export function GamePage() {
     return (
         <>
         <main className={styles.gamePage}>
-
-            <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef, timerValue }}>
-
                 {isGameWon ? <GameOverModal/> : null }
-                <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
-                </ImageContainer>
 
-            </GameContext.Provider>
+                <GameHeader />
+                {/* <header>
+                    <TimerDisplay />
+                </header> */}
+
+
+                <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef, timerValue }}>
+
+                    <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
+                    </ImageContainer>
+
+                </GameContext.Provider>
 
         </main>
         </>
