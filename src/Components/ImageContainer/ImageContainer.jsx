@@ -11,8 +11,10 @@ export function ImageContainer({showTargetBox=false, handleClick}) {
 
 
 
-    const { isGameWonRef, imageDimensionsRef } = useContext(GameContext);
-    const isGameWon = isGameWonRef.current;
+    // replace isGameWonRef with state variable
+    // const { isGameWonRef, imageDimensionsRef } = useContext(GameContext);
+    const { isGameWon, imageDimensionsRef } = useContext(GameContext);
+    // const isGameWon = isGameWonRef.current;
     // console.log('checking isGameWon')
     // console.log(isGameWonRef)
 
