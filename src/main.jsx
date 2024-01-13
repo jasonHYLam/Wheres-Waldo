@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { PageLayout } from './Components/PageLayout/PageLayout.jsx'
 import { GamePage } from './Components/GamePage/GamePage.jsx'
-// import './index.css'
+import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([

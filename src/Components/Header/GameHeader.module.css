@@ -1,4 +1,7 @@
-.header {
+.gameHeader {
     position: fixed;
-    height: 140px;
+    height: 40px;
+    z-index: 2;
+    background-color: aliceblue;
+    width: 100svw;
 }

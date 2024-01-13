@@ -4,7 +4,7 @@ import { TimerDisplay } from '../TimerDisplay/TimerDisplay';
 export function GameHeader() {
     return (
         <>
-        <header className={styles.header}>
+        <header className={styles.gameHeader}>
             <TimerDisplay />
         </header>
         </>

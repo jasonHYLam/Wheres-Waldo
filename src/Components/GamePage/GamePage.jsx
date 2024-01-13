@@ -20,7 +20,6 @@ export function GamePage() {
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
     const isGameWonRef = useRef(false);
     const isGameWon = isGameWonRef.current;
-    console.log('and so, it happens again...')
 
     // const timerRef = useRef(0);
     // const timerValue = timerRef.current;
@@ -103,13 +102,10 @@ export function GamePage() {
         <main className={styles.gamePage}>
                 {isGameWon ? <GameOverModal/> : null }
 
-                <GameHeader />
-                {/* <header>
-                    <TimerDisplay />
-                </header> */}
-
 
                 <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWonRef, imageDimensionsRef, timerValue }}>
+
+                    <GameHeader />
 
                     <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
                     </ImageContainer>
