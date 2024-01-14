@@ -5,15 +5,6 @@ export function TimerDisplay() {
 
     const { isGameWon } = useContext(GameContext)
 
-    console.log('is game over')
-    console.log(isGameWon)
-
-    // yanked
-    ////////////////
-    // const startTimeValue = useRef(new Date().getTime())
-    // const [ endTimeValue, setEndTimeValue] = useState(new Date().getTime());
-    // const [ timeDiff, setTimeDiff ] = useState(0)
-    // const [ formattedTimeDiff, setFormattedTimeDiff ] = useState({})
 
     const [ timerCount, setTimerCount ] = useState(0);
     const [ formattedTimerCount, setFormattedTimerCount ] = useState({});
@@ -21,6 +12,8 @@ export function TimerDisplay() {
     // refactor.. by using setInterval and clearInterval.
 
     useEffect(() => {
+
+        if (!isGameWon) {
 
         const intervalId = setInterval(() => {
             setTimerCount(timerCount + 1)
@@ -45,46 +38,14 @@ export function TimerDisplay() {
 
         return () => clearInterval(intervalId)
 
-    }, [timerCount])
-    // useEffect(() => {
+        }
 
-    //     function updateTimer() {
+        else {
+            console.log('GAME WON YESSS ')
+        }
 
-    //         if (!isGameWon) {
-    //             setEndTimeValue(new Date().getTime())
-    //             setTimeDiff( endTimeValue - startTimeValue.current )
 
-    //             // Convert the time elapsed into the corresponding time increment, and use floor to display integer. Use modulo operator to start counters from 0 after reaching 59.
-    //             // Display 01 -09 if value is less than 10.
-    //             let hours = Math.floor(timeDiff / (60 * 60 * 1000));
-    //             hours = (hours < 10) ? `0${hours}` : `${hours}`;
-
-    //             let minutes = Math.floor(timeDiff / (60 * 1000)) % 60;
-    //             minutes = (minutes < 10) ? `0${minutes}` : `${minutes}`;
-
-    //             let seconds = Math.floor(timeDiff / (1000)) % 60;
-    //             seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
-
-    //             setFormattedTimeDiff({
-    //                 hours: hours,
-    //                 minutes: minutes,
-    //                 seconds: seconds,
-    //             })
-
-    //         }
-    //         else if (isGameWon) {
-    //             console.log('game won hopefully now')
-    //             // setTimerValue here
-    //         }
-    //     }
-
-    //     updateTimer()
-
-    // },
-    // [endTimeValue, isGameWon, timeDiff]
-    // );
-    /////////////////
-    // end of yanking
+    }, [timerCount, isGameWon])
 
     return (
         <>
@@ -97,23 +58,6 @@ export function TimerDisplay() {
                 :
                 {formattedTimerCount.seconds}
             </p>
-            {/* {
-                !isGameWon ? 
-            <>
-            <p>{timeDiff}</p>
-            <p>
-                {formattedTimeDiff.hours} 
-                :
-                {formattedTimeDiff.minutes} 
-                :
-                {formattedTimeDiff.seconds} 
-            </p>
-            
-            </>
-            :
-            null
-
-            } */}
 
         </section>
         </>
