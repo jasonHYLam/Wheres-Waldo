@@ -61,6 +61,8 @@ export function TimerDisplay() {
         <section>
             {
                 !isGameWon ? 
+            <>
+            <p>{timeDiff}</p>
             <p>
                 {formattedTimeDiff.hours} 
                 :
@@ -68,17 +70,12 @@ export function TimerDisplay() {
                 :
                 {formattedTimeDiff.seconds} 
             </p>
+            
+            </>
             :
             null
 
             }
-            {/* // <p>
-            //     {formattedTimeDiff.hours} 
-            //     :
-            //     {formattedTimeDiff.minutes} 
-            //     :
-            //     {formattedTimeDiff.seconds} 
-            // </p> */}
 
         </section>
         </>
