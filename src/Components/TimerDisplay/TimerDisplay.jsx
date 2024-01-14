@@ -5,8 +5,8 @@ export function TimerDisplay() {
 
     const { isGameWon } = useContext(GameContext)
 
-    // console.log('is game over')
-    // console.log(isGameWon)
+    console.log('is game over')
+    console.log(isGameWon)
 
     // yanked
     ////////////////
@@ -17,49 +17,65 @@ export function TimerDisplay() {
 
     const [ formattedTimeDiff, setFormattedTimeDiff ] = useState({})
 
+    const [ timerCount, setTimerCount ] = useState(0);
+    const [ formattedTimerCount, setFormattedTimerCount ] = useState({});
+
+    // refactor.. by using setInterval and clearInterval.
+
     useEffect(() => {
-        function updateTimer() {
 
-            if (!isGameWon) {
-                setEndTimeValue(new Date().getTime())
-                setTimeDiff( endTimeValue - startTimeValue.current )
+        const intervalId = setInterval(() => {
+            setTimerCount(timerCount + 1)
+        }, 1000)
 
-                // Convert the time elapsed into the corresponding time increment, and use floor to display integer. Use modulo operator to start counters from 0 after reaching 59.
-                // Display 01 -09 if value is less than 10.
-                let hours = Math.floor(timeDiff / (60 * 60 * 1000));
-                hours = (hours < 10) ? `0${hours}` : `${hours}`;
+        return () => clearInterval(intervalId)
 
-                let minutes = Math.floor(timeDiff / (60 * 1000)) % 60;
-                minutes = (minutes < 10) ? `0${minutes}` : `${minutes}`;
+    }, [timerCount])
+    // useEffect(() => {
 
-                let seconds = Math.floor(timeDiff / (1000)) % 60;
-                seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+    //     function updateTimer() {
 
-                setFormattedTimeDiff({
-                    hours: hours,
-                    minutes: minutes,
-                    seconds: seconds,
-                })
+    //         if (!isGameWon) {
+    //             setEndTimeValue(new Date().getTime())
+    //             setTimeDiff( endTimeValue - startTimeValue.current )
 
-            }
-            else if (isGameWon) {
-                console.log('game won hopefully now')
-                // setTimerValue here
-            }
-        }
+    //             // Convert the time elapsed into the corresponding time increment, and use floor to display integer. Use modulo operator to start counters from 0 after reaching 59.
+    //             // Display 01 -09 if value is less than 10.
+    //             let hours = Math.floor(timeDiff / (60 * 60 * 1000));
+    //             hours = (hours < 10) ? `0${hours}` : `${hours}`;
 
-        updateTimer()
+    //             let minutes = Math.floor(timeDiff / (60 * 1000)) % 60;
+    //             minutes = (minutes < 10) ? `0${minutes}` : `${minutes}`;
 
-    },
-    [endTimeValue, isGameWon, timeDiff]
-    );
+    //             let seconds = Math.floor(timeDiff / (1000)) % 60;
+    //             seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+
+    //             setFormattedTimeDiff({
+    //                 hours: hours,
+    //                 minutes: minutes,
+    //                 seconds: seconds,
+    //             })
+
+    //         }
+    //         else if (isGameWon) {
+    //             console.log('game won hopefully now')
+    //             // setTimerValue here
+    //         }
+    //     }
+
+    //     updateTimer()
+
+    // },
+    // [endTimeValue, isGameWon, timeDiff]
+    // );
     /////////////////
     // end of yanking
 
     return (
         <>
         <section>
-            {
+            <p>{timerCount}</p>
+            {/* {
                 !isGameWon ? 
             <>
             <p>{timeDiff}</p>
@@ -75,7 +91,7 @@ export function TimerDisplay() {
             :
             null
 
-            }
+            } */}
 
         </section>
         </>
