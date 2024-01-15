@@ -1,10 +1,12 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { GameContext } from "../GamePage/GamePage"
+import styles from './CharacterInHeader.module.css'
 
 export function CharacterInHeader({name, backgroundUrl}) {
 
     const { charactersData } = useContext(GameContext)
     console.log(charactersData)
+    const [ isFound, setIsFound ] = useState(false)
 
     // needs to check if the object corresponding to name has a true isFound, if so, display different style.
     useEffect(() => {
@@ -12,15 +14,20 @@ export function CharacterInHeader({name, backgroundUrl}) {
         const character = charactersData.find(character => {
             return character.name === name
         })
-        console.log(character)
-        // const isFound = character.isFound
-        console.log(name)
-        // console.log(isFound)
-        
+        if (character) {
+            if (character.isFound === true) setIsFound(true)
+        }
     })
+
     return (
+        !isFound ? 
         <>
-        <img src={backgroundUrl} alt="" />
+        <img className={styles.imageNotFound} src={backgroundUrl} alt="" />
         </>
+        :
+        <>
+        <img className={styles.imageFound} src={backgroundUrl} alt="" />
+        </>
+
     )
 }
