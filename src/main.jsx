@@ -13,6 +13,10 @@ const router = createBrowserRouter([
       {
         path: 'wheres-waldo',
         element: <GamePage />,
+      },
+      {
+        path: 'leaderboard'
+        // element:
       }
     ]
   }
