@@ -6,12 +6,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { GamePage } from './Components/GamePage/GamePage.jsx'
 import { LeaderboardPage } from './Components/LeaderboardPage.jsx/LeaderboardPage.jsx'
+import { SelectMapPage } from './Components/SelectMapPage/SelectMapPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <PageLayout />,
     children: [
+      {
+        path: 'map-select',
+        element: <SelectMapPage />,
+      },
       {
         path: 'game/:name',
         element: <GamePage />,
