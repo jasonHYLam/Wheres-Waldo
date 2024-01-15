@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <PageLayout />,
     children: [
       {
-        path: 'wheres-waldo',
+        path: 'game/:name',
         element: <GamePage />,
       },
       {

@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { GameContext } from '../GamePage/GamePage';
 // import { GameOverModal } from '../GameOverModal/GameOverModal';
 
-import backgroundImage from '../../assets/wheresWaldoPokemon.jpeg'
+import backgroundImage from '../../assets/saffronCity.jpeg'
 
 export function ImageContainer({showTargetBox=false, handleClick}) {
 
