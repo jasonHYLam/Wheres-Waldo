@@ -1,21 +1,42 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export function LeaderboardPage() {
+
+    const [ allScores, setAllScores ] = useState({});
+
+    // may require a LOADING boolean state
+    const [ isLoading, setIsLoading ] = useState(true);
 
     useEffect(() => {
 
         async function getLeaderboard() {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_leaderboard`)
-            const data = response.json();
+            const { allScores } = await response.json();
 
-            console.log(data)
+            setAllScores(allScores);
+            setIsLoading(false);
         }
-    })
+
+        getLeaderboard()
+    },[])
 
     return (
+
         <>
         <h1>Leaderboard</h1>
         <p>Look upon these scores, ye Mighty, and despair</p>
+
+        {isLoading ? <p>Loading</p> :
+        allScores.map(score => {
+            console.log(score)
+            return (
+                <>
+                    <p>{score.name}</p>
+                    <p>{score.timeInSeconds}</p>
+                </>
+            )
+        })
+        }
 
         </>
     )
