@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { PageLayout } from './Components/PageLayout/PageLayout.jsx'
-import { GamePage } from './Components/GamePage/GamePage.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import { GamePage } from './Components/GamePage/GamePage.jsx'
+import { LeaderboardPage } from './Components/LeaderboardPage.jsx/LeaderboardPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,8 +17,8 @@ const router = createBrowserRouter([
         element: <GamePage />,
       },
       {
-        path: 'leaderboard'
-        // element:
+        path: 'leaderboard',
+        element:<LeaderboardPage/>
       }
     ]
   }
