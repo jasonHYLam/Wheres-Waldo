@@ -16,8 +16,17 @@ export function SubmitForm() {
 
         console.log(data)
 
-        fetch(`${import.meta.env.VITE_BACKEND_URL}/submit_score`)
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/submit_score`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: data
+        })
+
+        // add a redirect / navigate
     }
+
     return (
         <>
         <form method="POST" action="" onSubmit={handleSubmit(onSubmit)}>
