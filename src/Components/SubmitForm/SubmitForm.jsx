@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { GameContext } from "../GamePage/GamePage";
 
 export function SubmitForm() {
-    const {register, formState: {errors}, handleSubmit } = useForm();
 
+    const navigate = useNavigate();
+    const {register, formState: {errors}, handleSubmit } = useForm();
     const { timerValue } = useContext(GameContext)
 
     async function onSubmit(nameInput) {
@@ -23,6 +25,8 @@ export function SubmitForm() {
             },
             body: data
         })
+
+        navigate('/leaderboard');
 
         // add a redirect / navigate
     }
