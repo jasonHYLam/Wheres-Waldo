@@ -3,11 +3,21 @@ import styles from './GamePage.module.css';
 import { ImageContainer } from '../ImageContainer/ImageContainer';
 import { GameOverModal } from '../GameOverModal/GameOverModal';
 import { GameHeader } from '../Header/GameHeader';
+import { useParams } from 'react-router-dom';
 
 export const GameContext = createContext({
 })
 
 export function GamePage() {
+
+    const  { mapName } = useParams();
+    console.log('checking map name')
+    console.log(mapName)
+
+    const [ backgroundImage, setBackgroundImage ] = useState()
+    // this will depend on the name of the map i think.
+
+    const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
 
     const imageDimensionsRef = useRef({x: 1, y: 1});
     const imageDimensions = imageDimensionsRef.current;
@@ -16,7 +26,6 @@ export function GamePage() {
     const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
     // needed for backend verification
     const normalisedCoords = normaliseCoords(mouseCoords)
-    const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
     const [ isGameWon, setIsGameWon ] = useState(false);
     const [ timerValue, setTimerValue ] = useState(0)
 
@@ -34,12 +43,15 @@ export function GamePage() {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_char`)
             const data = await response.json();
 
-            const modifiedData = data.map(character => {
-                return {
-                    name: character.name,
-                    isFound: character.is_found,
-                }
+            const filteredModifiedData = data.map(character => {
+
+                // return character.map === 
+                // return {
+                //     // name: character.name,
+                //     // isFound: character.is_found,
+                // }
             })
+
 
             setCharactersData(modifiedData)
         }
