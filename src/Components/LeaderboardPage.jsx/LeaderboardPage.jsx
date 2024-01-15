@@ -28,7 +28,6 @@ export function LeaderboardPage() {
 
         {isLoading ? <p>Loading</p> :
         allScores.map(score => {
-            console.log(score)
             return (
                 <>
                     <p>{score.name}</p>
