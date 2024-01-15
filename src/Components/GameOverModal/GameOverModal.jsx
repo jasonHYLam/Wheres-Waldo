@@ -4,6 +4,7 @@ import { GameContext } from '../GamePage/GamePage'
 
 export function GameOverModal() {
     const { timerValue } = useContext(GameContext)
+    console.log(timerValue)
     return (
         <>
         <section className={styles.gameOverModal}>

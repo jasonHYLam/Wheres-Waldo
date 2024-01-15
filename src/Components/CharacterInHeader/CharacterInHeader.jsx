@@ -5,7 +5,6 @@ import styles from './CharacterInHeader.module.css'
 export function CharacterInHeader({name, backgroundUrl}) {
 
     const { charactersData } = useContext(GameContext)
-    console.log(charactersData)
     const [ isFound, setIsFound ] = useState(false)
 
     // needs to check if the object corresponding to name has a true isFound, if so, display different style.

@@ -95,10 +95,10 @@ export function GamePage() {
     return (
         <>
         <main className={styles.gamePage}>
-                {isGameWon ? <GameOverModal/> : null }
 
 
                 <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWon, imageDimensionsRef, timerValue, setTimerValue }}>
+                    {isGameWon ? <GameOverModal/> : null }
 
                     <GameHeader />
 
