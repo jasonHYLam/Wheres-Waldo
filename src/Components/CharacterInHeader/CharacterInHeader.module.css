@@ -1,0 +1,11 @@
+
+.imageNotFound {
+    height: 50px;
+    width: 50px;
+}
+
+.imageFound {
+    height: 50px;
+    width: 50px;
+    opacity: 50%;
+}
