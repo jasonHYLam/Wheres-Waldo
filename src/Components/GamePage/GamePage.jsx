@@ -44,16 +44,19 @@ export function GamePage() {
             const data = await response.json();
 
             const filteredModifiedData = data.map(character => {
-
-                // return character.map === 
-                // return {
-                //     // name: character.name,
-                //     // isFound: character.is_found,
-                // }
+                return character.map === mapName
+            })
+            .map(character => {
+                return {
+                    name: character.name,
+                    isFound: character.is_found,
+                }
             })
 
+            console.log(filteredModifiedData)
 
-            setCharactersData(modifiedData)
+            setCharactersData(filteredModifiedData)
+            // setCharactersData(modifiedData)
         }
 
         getCharacters();
