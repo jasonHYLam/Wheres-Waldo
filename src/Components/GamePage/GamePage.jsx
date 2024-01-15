@@ -5,6 +5,8 @@ import { GameOverModal } from '../GameOverModal/GameOverModal';
 import { GameHeader } from '../Header/GameHeader';
 import { useParams } from 'react-router-dom';
 
+import saffronCity from "../../assets/saffronCity.jpeg"
+
 export const GameContext = createContext({
 })
 
@@ -36,6 +38,15 @@ export function GamePage() {
         }
     }
 
+    useEffect(() => {
+
+        // now, does this actually do anything? 
+        function getBackground() {
+            if (mapName === 'saffron-city') setBackgroundImage(saffronCity)
+        }
+
+        getBackground()
+    })
 
     // useEffect hook to fetch the character data.
     useEffect(() => {
@@ -61,7 +72,9 @@ export function GamePage() {
 
         getCharacters();
     },
-    []
+    [
+        mapName
+    ]
     )
 
     // useEffect hook to start the game once the gamePage has rendered.
@@ -107,17 +120,18 @@ export function GamePage() {
         toggleTargetBox()
     }
 
+    // not sure if backgroundImage does anything
     return (
         <>
         <main className={styles.gamePage}>
 
 
-                <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWon, imageDimensionsRef, timerValue, setTimerValue }}>
+                <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWon, imageDimensionsRef, timerValue, setTimerValue, }}>
                     {isGameWon ? <GameOverModal/> : null }
 
                     <GameHeader />
 
-                    <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox}>
+                    <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox} backgroundImage={backgroundImage}>
                     </ImageContainer>
 
                 </GameContext.Provider>
