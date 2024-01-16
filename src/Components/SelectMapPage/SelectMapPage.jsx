@@ -1,4 +1,5 @@
-import { MapPreview } from "../MapPreview/MapPreview"
+import styles from './SelectMapPage.module.css';
+import { MapPreview } from "../MapPreview/MapPreview";
 
 import saffronCity from "../../assets/saffronCity.jpeg";
 import palletTown from "../../assets/palletTown.jpg";
@@ -10,9 +11,12 @@ export function SelectMapPage() {
         
         <p>Choose </p>
 
-        <MapPreview backgroundUrl={saffronCity} name={`saffron-city`}/>
-        <MapPreview backgroundUrl={palletTown} name={`pallet-town`} />
-        <MapPreview backgroundUrl={pokemonHouse} name={`pokemon-house`} />
+        <section className={styles.container}>
+            <MapPreview backgroundUrl={saffronCity} name={`saffron-city`}/>
+            <MapPreview backgroundUrl={palletTown} name={`pallet-town`} />
+            <MapPreview backgroundUrl={pokemonHouse} name={`pokemon-house`} />
+        </section>
+
 
         </>
     )
