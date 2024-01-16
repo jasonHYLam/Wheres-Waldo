@@ -5,9 +5,13 @@ import styles from './DropDownBox.module.css';
 import { DropDownCharacter } from '../DropDownCharacter/DropDownCharacter';
 
 
+// will need additional condition; that mapname matches charactersData
 export function DropDownBox() {
 
     const { mouseCoords, charactersData } = useContext(GameContext);
+
+    console.log('checking characters data')
+    console.log(charactersData)
 
     return (
         <>
@@ -18,6 +22,7 @@ export function DropDownBox() {
             }}
         >
             {charactersData.map(character => {
+                
                 if (!character.isFound) {
                     return <DropDownCharacter key={character.name} name={character.name}/>
                 }

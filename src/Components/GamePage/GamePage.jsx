@@ -59,21 +59,21 @@ export function GamePage() {
     }, [mapName])
 
     // useEffect hook to fetch the character data.
+    // need to check that it is only those that match the mapName
     useEffect(() => {
         async function getCharacters() {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_char`)
             const data = await response.json();
 
-            const filteredModifiedData = data.map(character => {
-                return character.map === mapName
-            })
-            .map(character => {
+            const filteredData = data.filter(character => (character.map === mapName))
+            const filteredModifiedData = filteredData.map(character => {
                 return {
                     name: character.name,
                     isFound: character.is_found,
                 }
             })
 
+            console.log('this is filtered modified data. behold')
             console.log(filteredModifiedData)
 
             setCharactersData(filteredModifiedData)
@@ -95,6 +95,7 @@ export function GamePage() {
     },[])
 
     // can i use this for stopping the game?
+    // I will need to check that it is only those that match the mapname
     useEffect(() => {
 
         if (charactersData.every(character => {
@@ -136,7 +137,7 @@ export function GamePage() {
                 <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWon, imageDimensionsRef, timerValue, setTimerValue, }}>
                     {isGameWon ? <GameOverModal/> : null }
 
-                    <GameHeader />
+                    <GameHeader mapName={mapName} />
 
                     <ImageContainer handleClick={handleClick} showTargetBox={showTargetBox} backgroundImage={backgroundImage}>
                     </ImageContainer>

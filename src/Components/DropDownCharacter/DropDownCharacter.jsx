@@ -2,9 +2,20 @@ import { useContext } from 'react';
 import styles from './DropDownCharacter.module.css';
 import { GameContext } from '../GamePage/GamePage';
 
+// saffron city
 import abra from '../../assets/abra.jpeg'
 import dewgong from '../../assets/dewgong.png'
 import gloom from '../../assets/gloom.png'
+
+// pallet town
+import horsea from '../../assets/horsea.png'
+import weepinbell from '../../assets/weepinbell.png'
+import sandshrew from '../../assets/sandshrew.webp'
+
+// pokemon house
+import diglett from '../../assets/diglett.png'
+import butterfree from '../../assets/butterfree.png'
+import lapras from '../../assets/lapras.png'
 
 export function DropDownCharacter({name}) {
 
@@ -19,6 +30,14 @@ export function DropDownCharacter({name}) {
     if (name === 'Abra') backgroundUrl = abra;
     else if (name === 'Dewgong') backgroundUrl = dewgong;
     else if (name === 'Gloom') backgroundUrl = gloom;
+
+    else if (name === 'Horsea') backgroundUrl = horsea;
+    else if (name === 'Weepinbell') backgroundUrl = weepinbell;
+    else if (name === 'Sandshrew') backgroundUrl = sandshrew;
+
+    else if (name === 'Diglett') backgroundUrl = diglett;
+    else if (name === 'Butterfree') backgroundUrl = butterfree;
+    else if (name === 'Lapras') backgroundUrl = lapras;
 
     async function clickCharacter() {
         const dataToSend = {name, normalisedCoords}

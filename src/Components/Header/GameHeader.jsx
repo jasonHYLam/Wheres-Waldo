@@ -20,15 +20,40 @@ import lapras from '../../assets/lapras.png'
 // how do i make it so that when i guess character, i grey it out? i need separate component i think
 // perhaps one that takes name and background url. 
 
-// 
+// determine characters based on mapName
+
 export function GameHeader({ mapName }) {
     return (
         <>
         <header className={styles.gameHeader}>
             <TimerDisplay />
-            <CharacterInHeader name='Abra' backgroundUrl={abra} />
-            <CharacterInHeader name='Dewgong' backgroundUrl={dewgong} />
-            <CharacterInHeader name='Gloom' backgroundUrl={gloom} />
+
+            {
+            mapName === 'saffron-city' ? 
+            <>
+                <CharacterInHeader name='Abra' backgroundUrl={abra} />
+                <CharacterInHeader name='Dewgong' backgroundUrl={dewgong} />
+                <CharacterInHeader name='Gloom' backgroundUrl={gloom} />
+            </>
+            :
+
+            mapName === 'pallet-town' ? 
+            <>
+                <CharacterInHeader name='Horsea' backgroundUrl={horsea} />
+                <CharacterInHeader name='Weepinbell' backgroundUrl={weepinbell} />
+                <CharacterInHeader name='Sandshrew' backgroundUrl={sandshrew} />
+            </>
+            :
+            mapName === 'pokemon-house' ? 
+            <>
+                <CharacterInHeader name='Diglett' backgroundUrl={diglett} />
+                <CharacterInHeader name='Butterfree' backgroundUrl={butterfree} />
+                <CharacterInHeader name='Lapras' backgroundUrl={lapras} />
+            </>
+            :
+            null
+            
+            }
         </header>
         </>
     )
