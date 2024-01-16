@@ -7,7 +7,10 @@ export function SubmitForm() {
 
     const navigate = useNavigate();
     const {register, formState: {errors}, handleSubmit } = useForm();
-    const { timerValue } = useContext(GameContext)
+    const { timerValue, mapName } = useContext(GameContext)
+
+    console.log('checking mapName')
+    console.log(mapName)
 
     async function onSubmit(nameInput) {
 
@@ -16,6 +19,7 @@ export function SubmitForm() {
         const data = JSON.stringify({
             name: nameInput.name,
             timerValue: timerValue,
+            mapName: mapName,
         })
 
         console.log(data)
@@ -29,8 +33,6 @@ export function SubmitForm() {
         })
 
         navigate('/leaderboard');
-
-        // add a redirect / navigate
     }
 
     return (
