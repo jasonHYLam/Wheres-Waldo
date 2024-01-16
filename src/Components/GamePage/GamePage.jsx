@@ -3,20 +3,21 @@ import styles from './GamePage.module.css';
 import { ImageContainer } from '../ImageContainer/ImageContainer';
 import { GameOverModal } from '../GameOverModal/GameOverModal';
 import { GameHeader } from '../Header/GameHeader';
-import { useParams } from 'react-router-dom';
+import { useOutletContext, useParams } from 'react-router-dom';
 
 import saffronCity from "../../assets/saffronCity.jpeg"
 import palletTown from "../../assets/palletTown.jpg";
 import pokemonHouse from "../../assets/pokemonHouse.jpg";
 
-export const GameContext = createContext({
-})
+export const GameContext = createContext({})
 
 export function GamePage() {
 
+    const { setMapName } = useOutletContext();
     const  { mapName } = useParams();
     console.log('checking map name')
     console.log(mapName)
+
 
     const [ backgroundImage, setBackgroundImage ] = useState()
     // this will depend on the name of the map i think.
@@ -46,6 +47,11 @@ export function GamePage() {
             y: 1000 * coords.y / imageDimensions.y,
         }
     }
+
+    // use outletContext state function setMapName, such that the leaderboard knows what map to display
+    useEffect(() => {
+        setMapName(mapName)
+    })
 
     // useEffect hook to set the background based on the mapName.
     useEffect(() => {

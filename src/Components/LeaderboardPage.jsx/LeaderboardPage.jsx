@@ -1,11 +1,22 @@
 import { useEffect, useState } from "react"
+import { useOutletContext } from "react-router-dom";
+
+import { LeaderboardScoreLoader } from "../LeaderboardScoreLoader/LeaderboardScoreLoader";
+
+import saffronCity from "../../assets/saffronCity.jpeg";
+import palletTown from "../../assets/palletTown.jpg";
+import pokemonHouse from "../../assets/pokemonHouse.jpg";
 
 export function LeaderboardPage() {
 
+    
+    const { mapName } = useOutletContext();
     const [ allScores, setAllScores ] = useState({});
 
     // may require a LOADING boolean state
     const [ isLoading, setIsLoading ] = useState(true);
+
+    const [ map, setMap ] = useState(null);
 
     useEffect(() => {
 
@@ -25,6 +36,10 @@ export function LeaderboardPage() {
         getLeaderboard()
     },[])
 
+    function onClick() {
+
+    }
+
     // need to conditionally display the corresponding map's leaderboard
     // god this is a pita
     return (
@@ -33,6 +48,9 @@ export function LeaderboardPage() {
         <h1>Leaderboard</h1>
         <p>Look upon these scores, ye Mighty, and despair</p>
 
+        <LeaderboardScoreLoader map={'saffron-city'} backgroundUrl={saffronCity} setMapName={setMap} />
+        <LeaderboardScoreLoader map={'pallet-town'} backgroundUrl={palletTown} setMapName={setMap} />
+        <LeaderboardScoreLoader map={'pokemon-house'} backgroundUrl={pokemonHouse} setMapName={setMap} />
 
         {isLoading ? <p>Loading</p> :
         allScores.map(score => {
