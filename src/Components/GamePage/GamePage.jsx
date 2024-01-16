@@ -38,15 +38,14 @@ export function GamePage() {
         }
     }
 
+    // useEffect hook to set the background based on the mapName.
     useEffect(() => {
-
-        // now, does this actually do anything? 
         function getBackground() {
             if (mapName === 'saffron-city') setBackgroundImage(saffronCity)
         }
 
         getBackground()
-    })
+    }, [mapName])
 
     // useEffect hook to fetch the character data.
     useEffect(() => {

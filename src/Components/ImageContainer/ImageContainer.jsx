@@ -3,9 +3,6 @@ import { DropDownBox } from '../DropDownBox/DropDownBox';
 import styles from './ImageContainer.module.css';
 import { useContext } from 'react';
 import { GameContext } from '../GamePage/GamePage';
-// import { GameOverModal } from '../GameOverModal/GameOverModal';
-
-// import backgroundImage from '../../assets/saffronCity.jpeg'
 
 export function ImageContainer({ showTargetBox=false, handleClick, backgroundImage }) {
 
