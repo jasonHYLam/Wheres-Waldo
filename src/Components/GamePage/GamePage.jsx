@@ -6,6 +6,8 @@ import { GameHeader } from '../Header/GameHeader';
 import { useParams } from 'react-router-dom';
 
 import saffronCity from "../../assets/saffronCity.jpeg"
+import palletTown from "../../assets/palletTown.jpg";
+import pokemonHouse from "../../assets/pokemonHouse.jpg";
 
 export const GameContext = createContext({
 })
@@ -42,6 +44,8 @@ export function GamePage() {
     useEffect(() => {
         function getBackground() {
             if (mapName === 'saffron-city') setBackgroundImage(saffronCity)
+            else if (mapName === 'pallet-town') setBackgroundImage(palletTown)
+            else if (mapName === 'pokemon-house') setBackgroundImage(pokemonHouse)
         }
 
         getBackground()
