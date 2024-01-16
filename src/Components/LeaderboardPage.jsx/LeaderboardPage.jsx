@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useOutletContext } from "react-router-dom";
 
 import { LeaderboardScoreLoader } from "../LeaderboardScoreLoader/LeaderboardScoreLoader";
 
@@ -9,13 +8,8 @@ import pokemonHouse from "../../assets/pokemonHouse.jpg";
 
 export function LeaderboardPage() {
 
-    
-    const { mapName } = useOutletContext();
     const [ allScores, setAllScores ] = useState({});
-
-    // may require a LOADING boolean state
     const [ isLoading, setIsLoading ] = useState(true);
-
     const [ map, setMap ] = useState(null);
 
     useEffect(() => {
@@ -35,10 +29,6 @@ export function LeaderboardPage() {
 
         getLeaderboard()
     },[])
-
-    function onClick() {
-
-    }
 
     // need to conditionally display the corresponding map's leaderboard
     // god this is a pita
