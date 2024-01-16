@@ -32,6 +32,8 @@ export function GamePage() {
     const [ showTargetBox, setShowTargetBox ] = useState(false);
     // needed to display click properly
     const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
+    console.log('checking mouse coords')
+    console.log(mouseCoords)
     // needed for backend verification
     const normalisedCoords = normaliseCoords(mouseCoords)
     // console.log('current normalisedCoords')
@@ -134,7 +136,7 @@ export function GamePage() {
         <main className={styles.gamePage}>
 
 
-                <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWon, imageDimensionsRef, timerValue, setTimerValue, }}>
+                <GameContext.Provider value={{ mouseCoords, normalisedCoords, charactersData, setCharactersData, isGameWon, imageDimensionsRef, timerValue, setTimerValue, mapName}}>
                     {isGameWon ? <GameOverModal/> : null }
 
                     <GameHeader mapName={mapName} />

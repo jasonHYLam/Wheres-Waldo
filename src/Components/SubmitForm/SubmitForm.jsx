@@ -11,6 +11,8 @@ export function SubmitForm() {
 
     async function onSubmit(nameInput) {
 
+        // will also need to post the MAP 
+        // will need to modify userAndScore model I think
         const data = JSON.stringify({
             name: nameInput.name,
             timerValue: timerValue,
