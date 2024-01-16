@@ -25,11 +25,18 @@ export function GamePage() {
 
     const imageDimensionsRef = useRef({x: 1, y: 1});
     const imageDimensions = imageDimensionsRef.current;
+
+    console.log('checking image dimensions')
+    console.log(imageDimensions)
+
     const [ showTargetBox, setShowTargetBox ] = useState(false);
     // needed to display click properly
     const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
     // needed for backend verification
     const normalisedCoords = normaliseCoords(mouseCoords)
+    // console.log('current normalisedCoords')
+    // console.log(normalisedCoords)
+
     const [ isGameWon, setIsGameWon ] = useState(false);
     const [ timerValue, setTimerValue ] = useState(0)
 
@@ -70,7 +77,6 @@ export function GamePage() {
             console.log(filteredModifiedData)
 
             setCharactersData(filteredModifiedData)
-            // setCharactersData(modifiedData)
         }
 
         getCharacters();
@@ -95,7 +101,6 @@ export function GamePage() {
             return character.isFound
         })) {
             console.log('all characters found')
-            // isGameWonRef.current = true;
             setIsGameWon(true)
 
             async function getTimerValue() {
@@ -123,7 +128,6 @@ export function GamePage() {
         toggleTargetBox()
     }
 
-    // not sure if backgroundImage does anything
     return (
         <>
         <main className={styles.gamePage}>
