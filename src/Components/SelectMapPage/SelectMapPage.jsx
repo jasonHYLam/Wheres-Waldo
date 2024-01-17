@@ -11,11 +11,17 @@ export function SelectMapPage() {
         
         <p>Choose </p>
 
-        <section className={styles.container}>
-            <MapPreview backgroundUrl={saffronCity} name={`saffron-city`}/>
-            <MapPreview backgroundUrl={palletTown} name={`pallet-town`} />
-            <MapPreview backgroundUrl={pokemonHouse} name={`pokemon-house`} />
-        </section>
+        <main className={styles.pageWrapper}>
+
+            <section className={styles.container}>
+                <MapPreview backgroundUrl={saffronCity} name={`saffron-city`}/>
+                <MapPreview backgroundUrl={palletTown} name={`pallet-town`} />
+                <MapPreview backgroundUrl={pokemonHouse} name={`pokemon-house`} />
+            </section>
+
+
+
+        </main>
 
 
         </>

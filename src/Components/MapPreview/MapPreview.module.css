@@ -1,4 +1,12 @@
-/* what should i do here */
 .mapPreview {
+   height: 500px; 
+   width: 300px;
+   background-color: blue;
 
+}
+
+.image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
