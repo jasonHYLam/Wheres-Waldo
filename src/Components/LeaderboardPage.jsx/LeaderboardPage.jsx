@@ -20,7 +20,7 @@ export function LeaderboardPage() {
             // hm could i lift state, create a parent component called PageLayout, store mapName there? then use outlet context perhaps
             // or... do something like game/saffron-city/leaderboard, and get mapName via useParams()? that seems more straightforward
             // either option doesn't seem too bad to be honest. 
-            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_leaderboard`)
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_leaderboard/${map}`)
             const { allScores } = await response.json();
 
             setAllScores(allScores);
