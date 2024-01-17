@@ -50,7 +50,7 @@ export function LeaderboardPage() {
         <>
         <h1>Leaderboard</h1>
         <p>Look upon these scores, ye Mighty, and despair</p>
-        <p>(Click on map display its scores)</p>
+        <p>(Click on the maps to display their scores)</p>
         
         <section className={styles.loaderContainer}>
             <LeaderboardScoreLoader map={'saffron-city'} backgroundUrl={saffronCity} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted} />
@@ -66,14 +66,15 @@ export function LeaderboardPage() {
         allScores.map(score => {
             return (
 
-                <section key={score._id}>
-                    <section>
-                        <p>{score.name}</p>
-                        <p>{score.timeInSeconds}</p>
+                // <section key={score._id}>
+                //     <section>
+                //         <p>{score.name}</p>
+                //         <p>{score.timeInSeconds}</p>
 
-                    </section>
+                //     </section>
 
-                </section>
+                // </section>
+                < LeaderboardEntry key={score.id} entry={score} />
             )
         })
         }
