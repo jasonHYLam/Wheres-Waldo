@@ -3,6 +3,7 @@ import styles from './LeaderboardPage.module.css';
 import { useEffect, useState } from "react"
 
 import { LeaderboardScoreLoader } from "../LeaderboardScoreLoader/LeaderboardScoreLoader";
+import { LeaderboardEntry } from '../LeaderboardEntry/LeaderboardEntry';
 
 import saffronCity from "../../assets/saffronCity.jpeg";
 import palletTown from "../../assets/palletTown.jpg";
@@ -66,8 +67,11 @@ export function LeaderboardPage() {
             return (
 
                 <section key={score._id}>
-                    <p>{score.name}</p>
-                    <p>{score.timeInSeconds}</p>
+                    <section>
+                        <p>{score.name}</p>
+                        <p>{score.timeInSeconds}</p>
+
+                    </section>
 
                 </section>
             )

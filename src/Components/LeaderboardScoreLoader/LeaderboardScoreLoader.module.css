@@ -1,7 +1,7 @@
 .container {
     cursor: pointer;
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 300px;
+    max-width: 200px;
 }
 
 .image {
