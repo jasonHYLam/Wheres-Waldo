@@ -9,8 +9,8 @@ export function LeaderboardScoreLoader({map, backgroundUrl, setMapName, setIsCha
 
     return (
         <>
-        <section className={styles.loader} onClick={onClick}>
-            <img src={backgroundUrl} alt="" />
+        <section className={styles.container} onClick={onClick}>
+            <img className={styles.image} src={backgroundUrl} alt="" />
 
         </section>
         </>

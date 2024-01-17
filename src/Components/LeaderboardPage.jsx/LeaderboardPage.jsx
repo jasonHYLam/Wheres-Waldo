@@ -1,3 +1,5 @@
+import styles from './LeaderboardPage.module.css';
+
 import { useEffect, useState } from "react"
 
 import { LeaderboardScoreLoader } from "../LeaderboardScoreLoader/LeaderboardScoreLoader";
@@ -48,10 +50,13 @@ export function LeaderboardPage() {
         <h1>Leaderboard</h1>
         <p>Look upon these scores, ye Mighty, and despair</p>
         <p>(Click on map display its scores)</p>
+        
+        <section className={styles.loaderContainer}>
+            <LeaderboardScoreLoader map={'saffron-city'} backgroundUrl={saffronCity} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted} />
+            <LeaderboardScoreLoader map={'pallet-town'} backgroundUrl={palletTown} setMapName={setMap}  setIsChangeSubmitted={setIsChangeSubmitted} />
+            <LeaderboardScoreLoader map={'pokemon-house'} backgroundUrl={pokemonHouse} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted}  />
+        </section>
 
-        <LeaderboardScoreLoader map={'saffron-city'} backgroundUrl={saffronCity} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted} />
-        <LeaderboardScoreLoader map={'pallet-town'} backgroundUrl={palletTown} setMapName={setMap}  setIsChangeSubmitted={setIsChangeSubmitted} />
-        <LeaderboardScoreLoader map={'pokemon-house'} backgroundUrl={pokemonHouse} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted}  />
 
         {isLoading ? <p>Loading</p> :
 
