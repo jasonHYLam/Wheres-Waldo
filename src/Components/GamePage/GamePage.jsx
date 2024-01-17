@@ -14,30 +14,17 @@ export const GameContext = createContext({})
 export function GamePage() {
 
     const  { mapName } = useParams();
-    console.log('checking map name')
-    console.log(mapName)
 
-
+    // BackgroundImage determined by mapName.
     const [ backgroundImage, setBackgroundImage ] = useState()
-    // this will depend on the name of the map i think.
-
     const [ charactersData, setCharactersData ] = useState([{isFound: false}]);
-
     const imageDimensionsRef = useRef({x: 1, y: 1});
     const imageDimensions = imageDimensionsRef.current;
-
-    console.log('checking image dimensions')
-    console.log(imageDimensions)
-
     const [ showTargetBox, setShowTargetBox ] = useState(false);
-    // needed to display click properly
+    // Required to display targetBox and dropDownBox on click.
     const [ mouseCoords, setMouseCoords ] = useState({x: 0, y: 0});
-    console.log('checking mouse coords')
-    console.log(mouseCoords)
-    // needed for backend verification
+    // Required for backend verification.
     const normalisedCoords = normaliseCoords(mouseCoords)
-    // console.log('current normalisedCoords')
-    // console.log(normalisedCoords)
 
     const [ isGameWon, setIsGameWon ] = useState(false);
     const [ timerValue, setTimerValue ] = useState(0)
@@ -60,8 +47,7 @@ export function GamePage() {
         getBackground()
     }, [mapName])
 
-    // useEffect hook to fetch the character data.
-    // need to check that it is only those that match the mapName
+    // useEffect hook to fetch the character data, based on mapName.
     useEffect(() => {
         async function getCharacters() {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_char`)
@@ -75,18 +61,12 @@ export function GamePage() {
                 }
             })
 
-            console.log('this is filtered modified data. behold')
-            console.log(filteredModifiedData)
-
             setCharactersData(filteredModifiedData)
         }
 
         getCharacters();
     },
-    [
-        mapName
-    ]
-    )
+    [mapName])
 
     // useEffect hook to start the game once the gamePage has rendered.
     useEffect(() => {
@@ -96,29 +76,22 @@ export function GamePage() {
         startTimer()
     },[])
 
-    // can i use this for stopping the game?
-    // I will need to check that it is only those that match the mapname
+    // Required to stop the game.
     useEffect(() => {
 
         if (charactersData.every(character => {
             return character.isFound
         })) {
-            console.log('all characters found')
             setIsGameWon(true)
 
             async function getTimerValue() {
                 const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/stop_game`)
 
                 const { timeTotal } = await response.json();
-                console.log(timeTotal)
                 setTimerValue(timeTotal)
-
             }
-
             getTimerValue()
-
         }
-
     }, [ charactersData, isGameWon ])
 
     

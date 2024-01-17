@@ -43,26 +43,41 @@ export function LeaderboardPage() {
     return (
 
         <>
-        <Link to={'/map-select'}>Map Select</Link>
-        <h1>Leaderboard</h1>
-        <p>Look upon these scores, ye Mighty, and despair</p>
-        <p>(Click on the maps to display their scores)</p>
+        <main className={styles.pageWrapper}>
+
+            <Link to={'/map-select'}>Map Select</Link>
+            <h1>Leaderboard</h1>
+            <p>Look upon these scores, ye Mighty, and despair</p>
+            <p>(Click on the maps to display their scores)</p>
         
-        <section className={styles.loaderContainer}>
-            <LeaderboardScoreLoader map={'saffron-city'} backgroundUrl={saffronCity} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted} />
-            <LeaderboardScoreLoader map={'pallet-town'} backgroundUrl={palletTown} setMapName={setMap}  setIsChangeSubmitted={setIsChangeSubmitted} />
-            <LeaderboardScoreLoader map={'pokemon-house'} backgroundUrl={pokemonHouse} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted}  />
-        </section>
+            <section className={styles.loaderContainer}>
+                <LeaderboardScoreLoader map={'saffron-city'} backgroundUrl={saffronCity} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted} />
+                <LeaderboardScoreLoader map={'pallet-town'} backgroundUrl={palletTown} setMapName={setMap}  setIsChangeSubmitted={setIsChangeSubmitted} />
+                <LeaderboardScoreLoader map={'pokemon-house'} backgroundUrl={pokemonHouse} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted}  />
+            </section>
 
-        {isLoading ? <p>Loading</p> :
+            {isLoading ? <p>Loading</p> :
 
-        isChangeSubmitted === false ? null :
-        allScores.map(score => {
-            return (
-                < LeaderboardEntry key={score.id} entry={score} />
-            )
-        })
-        }
+            isChangeSubmitted === false ? null :
+
+            <section className={styles.entryContainer}>
+                {
+
+                allScores.map(score => {
+                    return (
+                        < LeaderboardEntry key={score.id} entry={score} />
+                    )
+                })
+
+                }
+
+
+            </section>
+
+            
+            }
+
+        </main>
 
         </>
     )

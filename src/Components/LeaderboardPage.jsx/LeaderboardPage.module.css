@@ -3,3 +3,18 @@
     flex-direction: row;
     gap: 20px;
 }
+
+.pageWrapper {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.entryContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+}

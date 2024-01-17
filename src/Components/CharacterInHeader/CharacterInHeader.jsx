@@ -7,7 +7,7 @@ export function CharacterInHeader({name, backgroundUrl}) {
     const { charactersData } = useContext(GameContext)
     const [ isFound, setIsFound ] = useState(false)
 
-    // needs to check if the object corresponding to name has a true isFound, if so, display different style.
+    // Checks if the object corresponding to name has a true isFound, if so, display different style.
     useEffect(() => {
 
         const character = charactersData.find(character => {

@@ -40,9 +40,8 @@ export function TimerDisplay() {
 
         }
 
-        else {
-            console.log('GAME WON YESSS ')
-        }
+        // Game is won; don't need to do anything.
+        else {return}
 
 
     }, [timerCount, isGameWon])
@@ -50,7 +49,6 @@ export function TimerDisplay() {
     return (
         <>
         <section>
-            <p>{timerCount}</p>
             <p>
                 {formattedTimerCount.hours}
                 :

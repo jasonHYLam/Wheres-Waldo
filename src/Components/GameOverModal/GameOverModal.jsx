@@ -7,15 +7,13 @@ import { SubmitForm } from '../SubmitForm/SubmitForm'
 
 export function GameOverModal() {
     const { timerValue } = useContext(GameContext)
-    console.log(timerValue)
     return (
         <>
         <section className={styles.gameOverModal}>
 
-            <p>You found em all!</p>
-            <p>Your time: {timerValue} </p>
+            <h1>You found em all!</h1>
+            <p>Your time: {timerValue / 1000} s </p>
 
-            <p>Submit score:</p>
             <SubmitForm />
         </section>
         

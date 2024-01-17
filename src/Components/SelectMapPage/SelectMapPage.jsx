@@ -9,9 +9,10 @@ export function SelectMapPage() {
     return (
         <>
         
-        <p>Choose </p>
 
         <main className={styles.pageWrapper}>
+        <h1>Choose Map</h1>
+        <p>Where's Waldo with a Pokemon theme. Find all the characters before the jumpscare. Click the head for best results.</p>
 
             <section className={styles.container}>
                 <MapPreview backgroundUrl={saffronCity} name={`saffron-city`}/>
@@ -19,6 +20,7 @@ export function SelectMapPage() {
                 <MapPreview backgroundUrl={pokemonHouse} name={`pokemon-house`} />
             </section>
 
+        <p>Art from Let's Find Pokemon! by Kazunori Aihara and Yuki Shimotoku</p>
 
 
         </main>
