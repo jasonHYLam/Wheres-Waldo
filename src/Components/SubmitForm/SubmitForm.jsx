@@ -9,9 +9,6 @@ export function SubmitForm() {
     const {register, formState: {errors}, handleSubmit } = useForm();
     const { timerValue, mapName } = useContext(GameContext)
 
-    console.log('checking mapName')
-    console.log(mapName)
-
     async function onSubmit(nameInput) {
 
         // will also need to post the MAP 
@@ -21,8 +18,6 @@ export function SubmitForm() {
             timerValue: timerValue,
             mapName: mapName,
         })
-
-        console.log(data)
 
         fetch(`${import.meta.env.VITE_BACKEND_URL}/submit_score`, {
             method: 'POST',

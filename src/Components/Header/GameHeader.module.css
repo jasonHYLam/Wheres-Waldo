@@ -1,7 +1,11 @@
 .gameHeader {
     position: fixed;
-    height: 40px;
+    height: 60px;
     z-index: 2;
     background-color: aliceblue;
     width: 100svw;
+
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
