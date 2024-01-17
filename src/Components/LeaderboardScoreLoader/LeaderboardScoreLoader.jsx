@@ -1,7 +1,8 @@
-export function LeaderboardScoreLoader({map, backgroundUrl, setMapName}) {
+export function LeaderboardScoreLoader({map, backgroundUrl, setMapName, setIsChangeSubmitted}) {
 
     function onClick() {
         setMapName(map)
+        setIsChangeSubmitted(false)
     }
 
     return (
