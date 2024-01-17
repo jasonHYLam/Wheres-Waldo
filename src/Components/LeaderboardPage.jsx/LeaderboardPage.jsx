@@ -42,13 +42,12 @@ export function LeaderboardPage() {
         getLeaderboard()
     },[map, isChangeSubmitted])
 
-    // need to conditionally display the corresponding map's leaderboard
-    // god this is a pita
     return (
 
         <>
         <h1>Leaderboard</h1>
         <p>Look upon these scores, ye Mighty, and despair</p>
+        <p>(Click on map display its scores)</p>
 
         <LeaderboardScoreLoader map={'saffron-city'} backgroundUrl={saffronCity} setMapName={setMap} setIsChangeSubmitted={setIsChangeSubmitted} />
         <LeaderboardScoreLoader map={'pallet-town'} backgroundUrl={palletTown} setMapName={setMap}  setIsChangeSubmitted={setIsChangeSubmitted} />
@@ -60,10 +59,12 @@ export function LeaderboardPage() {
         isChangeSubmitted === false ? null :
         allScores.map(score => {
             return (
-                <>
+
+                <section key={score._id}>
                     <p>{score.name}</p>
                     <p>{score.timeInSeconds}</p>
-                </>
+
+                </section>
             )
         })
         }
