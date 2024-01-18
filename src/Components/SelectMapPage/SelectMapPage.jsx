@@ -12,7 +12,7 @@ export function SelectMapPage() {
 
         <main className={styles.pageWrapper}>
         <h1>Choose Map</h1>
-        <p>Where's Waldo with a Pokemon theme. Find all the characters before the jumpscare. Click the head for best results.</p>
+        <p>Where's Waldo with a Pokemon theme. Click on the head for best results!</p>
 
             <section className={styles.container}>
                 <MapPreview backgroundUrl={saffronCity} name={`saffron-city`}/>
